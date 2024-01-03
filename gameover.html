@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="IMG/asteroide.png">
+    <title>Game Over</title>
+</head>
+<body class="bodyGO">
+    <h2>You have lost all the lives</h2>
+    <svg viewBox="0 0 960 300">
+        <symbol id="s-text">
+          <text text-anchor="middle" x="50%" y="70%">GAME OVER!</text>
+        </symbol>
+        <g class = "g-ants">
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+        </g>
+      </svg>
+    <ul>
+        <li style="--clr:red">
+            <a href="inicio.html" data-text="&nbsp;RESTART">&nbsp;RESTART&nbsp;</a><br>
+        </li>
+    </ul>
+    <audio id="ambient-sound" src="./sounds/gameoverSound.mp3" autoplay loop>
+</body>
+</html>

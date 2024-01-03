@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Homenaje&family=Josefin+Sans&family=Mohave:wght@300&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Homenaje', sans-serif;
+  overflow: hidden;
+}
+
+.bodyS,
+.bodyGO {
+  background-image: url(IMG/space-stars.gif);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /*background-color: black;*/
+}
+
+main,
+.inicio {
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+  text-align: center;
+  background-color: black;
+}
+
+main {
+  background-image: url(./img/bg.gif);
+  background-size: fill;
+  background-position: center;
+}
+
+span {
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+}
+
+ul {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 400px;
+  text-align: left;
+}
+
+ul li {
+  position: relative;
+  list-style: none;
+}
+
+ul li a {
+  font-size: 4em;
+  text-decoration: none;
+  letter-spacing: 2px;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255);
+
+}
+
+ul li a::before {
+  content: attr(data-text);
+  position: absolute;
+  color: var(--clr);
+  width: 0;
+  overflow: hidden;
+  transition: 2s;
+  border-right: 8px solid var(--clr);
+  -webkit-text-stroke: 1px var(--clr);
+
+}
+
+ul li a:hover::before {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--clr));
+
+}
+
+.score,
+.hi-score {
+  font-size: 30px;
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.stack span {
+  font-weight: bold;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  font-size: 4rem;
+  --stack-height: calc(100% / var(--stacks) - 1px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  --clip-top: calc(var(--stack-height) * var(--index));
+  --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+  animation: stack 500ms cubic-bezier(.46, .29, 0, 1.24) 1 backwards calc(var(--index) * 120ms), glitch 1s ease infinite 2s alternate-reverse;
+}
+
+.stack span:nth-child(odd) {
+  --glitch-translate: 8px;
+}
+
+.stack span:nth-child(even) {
+  --glitch-translate: -8px;
+}
+
+/** PAGINA GAMEOVER.HTML*/
+
+.bodyGO {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+h2{
+  color: #fff;
+  position: absolute;
+  width: 100vw;
+  text-align: center;
+  font-size: 70px;
+  margin-bottom: 30%;
+}
+.bodyGO ul {
+  margin-left: 75%;
+  position: absolute;
+
+}
+text{
+  font-size: 200px;
+}
+svg {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.text-copy {
+  fill: rgba(255, 0, 0, 0.271);
+  stroke: white;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 4px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1) {
+  stroke: red;
+  animation-delay: -1;
+}
+
+.text-copy:nth-child(2) {
+  stroke: red;
+  animation-delay: -2s;
+}
+
+.text-copy:nth-child(3) {
+  stroke: red;
+  animation-delay: -3s;
+}
+
+.text-copy:nth-child(4) {
+  stroke: red;
+  animation-delay: -4s;
+}
+
+.text-copy:nth-child(5) {
+  stroke: red;
+  animation-delay: -5s;
+}
+@keyframes stroke-offset {
+  100% {
+    stroke-dashoffset: -35%;
+  }
+}
+
+/***/
+
+@keyframes stack {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+    text-shadow: -2px 3px 0 #ff2f00, 2px -3px 0 #fff200;
+  }
+
+  ;
+
+  60% {
+    opacity: 0.5;
+    transform: translateX(50%);
+  }
+
+  80% {
+    transform: none;
+    opacity: 1;
+    text-shadow: 2px -3px 0 #ff2f00, -2px 3px 0 #fff200;
+  }
+
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 3px 0 #ff2f00, 2px -3px 0 #fff200;
+    transform: translate(var(--glitch-translate));
+  }
+
+  9% {
+    text-shadow: 2px -3px 0 #ff2f00, -2px 3px 0 #fff200;
+  }
+
+  11%,
+  100% {
+    text-shadow: none;
+    transform: none;
+  }
+}
